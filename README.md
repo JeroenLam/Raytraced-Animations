@@ -12,3 +12,6 @@ Change `genScene.sh` to create the desired scenes. \
 Run these in the root directory of the project: \
 `python3 genScene.sh` \
 `./render.sh`
+
+# Credit
+The main framework was provided by the university of Groningen durring hte Computer Graphics course. Some changes where made by Jeroen Lammers and Joris Peters for the competition.
