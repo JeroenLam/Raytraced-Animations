@@ -8,6 +8,7 @@ To create an animation we use a python script `genScene.py` to create a scene `j
 Examples of scenes can be found in the `Scenes` folder.
 
 ## TLDR
+Install `ffmpeg`. \
 Change `genScene.sh` to create the desired scenes. \
 Run these in the root directory of the project: \
 `python3 genScene.sh` \
