@@ -110,7 +110,7 @@ scene["Lights"] = [{"position": [-200, 600, 800],
                    {"position": [400, 600, 800],
                     "color": [0.5, 0.5, 0.5]}]
                     
-for idx in range(3000):
+for idx in range(60):
     scene["Objects"] = [sphere_earth(idx), 
                         sphere_green(idx/360 * math.pi), 
                         sphere_red(idx/360 * math.pi), 
