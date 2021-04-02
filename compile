@@ -1,0 +1,14 @@
+cd build      # cd into the directory
+cmake ..      # creates a Makefile
+# Compiling the code can then be done with:
+make -j4      # replacing 4 with the number of cores of your computer
+
+cd ..
+
+#for VAR in Scenes/*.json
+#do
+#    echo $VAR
+#    ./build/ray $VAR
+#done
+
+./build/ray Scenes/6.json

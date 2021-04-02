@@ -1,0 +1,3 @@
+/home/lumonis/Code/ComputerGraphics/Assignments/RT2/themisVersion/build/CMakeFiles/rebuild_cache.dir
+/home/lumonis/Code/ComputerGraphics/Assignments/RT2/themisVersion/build/CMakeFiles/edit_cache.dir
+/home/lumonis/Code/ComputerGraphics/Assignments/RT2/themisVersion/build/CMakeFiles/ray.dir
