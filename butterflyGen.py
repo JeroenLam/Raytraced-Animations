@@ -86,5 +86,3 @@ for t in range(6000):
     my_data_file = open('animation/' + "{:05d}".format(t) + '.j', 'w')
     my_data_file.write(str(scene))
     my_data_file.close()
-
-
