@@ -1,4 +1,6 @@
 import math
+import random
+import colorsys
 
 def sphere_earth(t):
     return {
@@ -10,35 +12,60 @@ def sphere_earth(t):
             "angle": t,
             "material":
             {
-                "texture": "textures/Faroer.png",
+                "texture": "textures/LB.png",
                 "ka": 0.2,
                 "kd": 0.8,
                 "ks": 0.0,
                 "n": 1
             }
           }
-
-def sphere_mirror(t):
-    curve_point = ( math.exp(math.cos(t)) - 2 * math.cos(4*t) + math.pow(math.sin(t/12), 5.0) )
-    x = math.sin(t) * curve_point
-    y = math.cos(t) * curve_point
-    return {
-            "type": "sphere",
-            "position": [150 * x, 150 * y, 0],
-            "radius": 40,
-            "material":
-            {
-                "ka": 0.0,
-                "kd": 0.0,
-                "ks": 0.9,
-                "n": 1
-            }
-          }
+class butterfly_orb:
+    def __init__(self, DT, T, Z, EPS, COL):
+        self.dt = DT
+        self.t = T
+        self.z = Z
+        self.eps = EPS
+        self.col = [COL[0], COL[1], COL[2]]
+        
+    def renderNext(self, rho):
+        # Compute new points in the X,Y plane
+        curve_point = ( math.exp(math.cos(self.t)) - 2 * math.cos(4*self.t) + math.pow(math.sin(self.t/12), 5.0) )
+        x = math.sin(self.t) * curve_point
+        y = math.cos(self.t) * curve_point
+        
+        # Increment time step
+        self.t = self.t + self.dt
+        
+        # Move the orb randomly in the z direction
+        self.z = self.z + (2*self.eps*random.random() - self.eps)
+        
+        x = x * 150
+        y = y * 150
+        z = self.z
+        
+        # Rotate points around y-axis
+        x_bar = x * math.cos(rho) + z * math.sin(rho)
+        y_bar = y
+        z_bar = z * math.cos(rho) - x * math.sin(rho)
+        
+        return {
+                    "type": "sphere",
+                    "position": [x_bar, y_bar, z_bar],
+                    "radius": 20,
+                    "material":
+                    {
+                        "color": self.col,
+                        "ka": 0.2,
+                        "kd": 0.5,
+                        "ks": 0.2,
+                        "n": 1
+                    }
+               }
           
 
 scene = dict()
 scene["Eye"] = [0, 0, 1000]
-scene["MaxRecursionDepth"] = 3
+scene["MaxRecursionDepth"] = 1
 #scene["SuperSamplingFactor"] = 2
 scene["Lights"] = [{"position": [-200, 600, 800],
                     "color": [0.5, 0.5, 0.5]},
@@ -46,32 +73,18 @@ scene["Lights"] = [{"position": [-200, 600, 800],
                     "color": [0.5, 0.5, 0.5]}]
                     
 factor = 200
-for t in range(400):
-    scene["Objects"] = [sphere_earth(0), 
-                        sphere_mirror( 1 * t / factor), 
-                        sphere_mirror( 2 * t / factor), 
-                        sphere_mirror( 3 * t / factor), 
-                        sphere_mirror( 5 * t / factor), 
-                        sphere_mirror( 7 * t / factor), 
-                        sphere_mirror(11 * t / factor), 
-                        sphere_mirror(13 * t / factor), 
-                        sphere_mirror(17 * t / factor), 
-                        sphere_mirror(19 * t / factor), 
-                        sphere_mirror(23 * t / factor), 
-                        sphere_mirror(29 * t / factor), 
-                        sphere_mirror(31 * t / factor), 
-                        sphere_mirror(37 * t / factor), 
-                        sphere_mirror(41 * t / factor), 
-                        sphere_mirror(43 * t / factor), 
-                        sphere_mirror(47 * t / factor), 
-                        sphere_mirror(53 * t / factor), 
-                        sphere_mirror(59 * t / factor), 
-                        sphere_mirror(61 * t / factor), 
-                        sphere_mirror(67 * t / factor), 
-                        sphere_mirror(71 * t / factor)]
+orb_obj_ar = []
+for idx in range(100):
+    orb_obj_ar.append(butterfly_orb(1/factor, idx/100*6.25, (random.random() * 400) - 200, 5, colorsys.hsv_to_rgb(random.random(),1,1)))
+  
+
+for t in range(6000):
+    scene["Objects"] = [sphere_earth(-t)]
+    for orb in orb_obj_ar:
+        scene["Objects"].append(orb.renderNext(t*math.pi / 90))
+    
     my_data_file = open('animation/' + "{:05d}".format(t) + '.j', 'w')
     my_data_file.write(str(scene))
     my_data_file.close()
-
 
 
