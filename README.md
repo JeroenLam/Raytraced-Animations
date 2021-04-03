@@ -13,10 +13,9 @@ The rendering script is currently not multithreaded. However, if the user wants 
 ## TLDR
 Install `ffmpeg`. \
 Change `genScene.py` to create the desired scenes. \
-Run one of the following in the root directory of the project (depending on your OS): \
+Run the following in the root directory of the project (depending on your OS): \
 `python3 genScene.py` \
-`./render.sh`
-`./renderWindows.sh`
+`./render.sh` or `./renderWindows.sh` (for Windows)
 
 # Credit
 The main framework was provided by the University of Groningen during the Computer Graphics course. It was modified by Jeroen Lammers and Joris Peters for the final competition.
