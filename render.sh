@@ -19,7 +19,7 @@ done
 echo "Adding all png files to list"
 touch frameList.txt
 
-for file in frams/*.png
+for file in animation/*.png
 do
     echo "file '$file'" >> frameList.txt
 done
