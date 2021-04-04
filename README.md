@@ -1,7 +1,7 @@
-# Raytraced-Animations
-A submission for the Computer Graphics course competition
+# Raytraced Panoramic Animations
+A submission for the Computer Graphics course competition. Our contribution creates short animated videos using raytracing. We hope to bring back some good memories of our Zernicke campus. We'd also like to the a beautiful view from a hill on the Faroe islands :) Of course, no panorama without flying raytraced geometric objects!
 
-The rendered videos can be found in the demo folder or under:
+The rendered videos can be found in the `demo` folder or under the following links:
 [![](http://img.youtube.com/vi/-m9zLEQgo_c/0.jpg)](http://www.youtube.com/watch?v=-m9zLEQgo_c "")
 [![](http://img.youtube.com/vi/cvG-viEHaoA/0.jpg)](http://www.youtube.com/watch?v=cvG-viEHaoA "")
 
