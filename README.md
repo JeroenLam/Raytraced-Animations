@@ -3,7 +3,7 @@ A submission for the Computer Graphics course competition. Our contribution crea
 
 The rendered videos can be found in the `demo` folder or under the following links:
 [![](http://img.youtube.com/vi/-m9zLEQgo_c/0.jpg)](http://www.youtube.com/watch?v=-m9zLEQgo_c "")
-[![](http://img.youtube.com/vi/cvG-viEHaoA/0.jpg)](http://www.youtube.com/watch?v=cvG-viEHaoA "")
+[![](http://img.youtube.com/vi/tPjY9bbU5_0/0.jpg)](https://www.youtube.com/watch?v=tPjY9bbU5_0 "")
 
 To create an animation, a python script `genScene.py` or `butterflyGen.py` are used to create a scene `json` for each frame. In `render.sh` (or `renderWindows.sh` for Windows), these scenes are rendered and converted into image files. Then, using `ffmpeg`, the resulting images are concatenated into a video file. Lastly, this video is compressed.
 
